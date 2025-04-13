@@ -1,0 +1,74 @@
+@import "../assets/base.css";
+
+@reference "../assets/base.css";
+
+main {
+  @apply px-4 flex flex-col gap-4;
+
+}
+
+.start {
+  @apply flex flex-col items-center sm:items-baseline gap-4;
+
+
+  & h1 {
+    @apply mt-15 sm:mt-30 text-7xl text-center sm:text-start sm:text-8xl font-bold;
+  }
+
+  & p {
+    @apply mt-15 mb-5 text-4xl sm:text-4xl;
+  }
+
+}
+
+nav {
+  @apply w-full sm:w-auto mb-30 flex flex-col sm:flex-row gap-6 sm:gap-16;
+
+  & a {
+    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg;
+  }
+}
+
+.topics {
+  @apply border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl;
+
+  & section {
+    @apply border-y border-border first:border-t-0 last:border-b-0;
+  }
+
+  & article {
+    @apply border-b-2 border-border last:border-b-0 py-8 flex flex-col md:flex-row odd:md:flex-row-reverse justify-between items-center gap-8;
+  }
+
+  & .content {
+    @apply flex-1 flex flex-col gap-8;
+
+    & h2 {
+      @apply text-3xl font-bold text-center sm:text-start;
+    }
+  }
+
+  & picture {
+    @apply w-64;
+  }
+
+  & img {
+    @apply w-64 h-auto object-fill;
+  }
+}
+
+footer {
+  @apply mt-10 py-6;
+
+  & p {
+    @apply px-4 flex flex-row justify-center sm:justify-start items-center gap-3;
+  }
+
+  & a {
+    @apply flex flex-row gap-1;
+  }
+
+  & picture {
+    @apply inline-block;
+  }
+}

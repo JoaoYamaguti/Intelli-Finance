@@ -1,0 +1,8 @@
+@reference "../assets/base.css";
+
+main {
+  @apply bg-primary dark:bg-amber-950;
+
+  height: 200px;
+  width: 200px;
+}
