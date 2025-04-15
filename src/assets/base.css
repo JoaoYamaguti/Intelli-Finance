@@ -30,6 +30,7 @@
 
   --color-border-root: var(--vt-c-divider-light-2);
   --color-border-hover-root: var(--vt-c-divider-light-1);
+  --color-border-invert-root: var(var(--vt-c-divider-dark-1));
 
   --color-heading-root: var(--vt-c-text-light-1);
   --color-text-root: var(--vt-c-text-light-1);
@@ -43,6 +44,7 @@
 
     --color-border-root: var(--vt-c-divider-dark-2);
     --color-border-hover-root: var(--vt-c-divider-dark-1);
+    --color-border-invert-root: var(var(--vt-c-divider-light-1));
 
     --color-heading-root: var(--vt-c-text-dark-1);
     --color-text-root: var(--vt-c-text-dark-2);
@@ -51,7 +53,8 @@
 
 @theme {
   --colors: #F2F2F2 #C8E7F9 #A7F0BA #305F72 #56C596 #E5E5E5;
-  --color-primary: #3097c0;
+  --color-primary: var(--color-blue-800);
+  --color-primary-hover: var(--color-blue-600);
   --color-secondary: #2c3e50;
   --color-success: #198754;
   --color-success-emphasis: #0a3622;
@@ -64,6 +67,7 @@
 
   --color-border: var(--color-border-root);
   --color-border-hover: var(--color-border-hover-root);
+  --color-border-invert: var(var(--vt-c-divider-light-1));
 
   --color-heading: var(--color-heading-root);
   --color-text: var(--color-text-root);
@@ -72,7 +76,11 @@
 *,
 *::before,
 *::after {
-  @apply m-0 p-0 box-border;
+  @apply m-0 p-0 box-border outline-0;
+}
+
+html {
+  @apply overscroll-none;
 }
 
 body {
@@ -81,7 +89,7 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  line-height: 1.6;
+  line-height: 1.5;
   font-family:
     Inter,
     -apple-system,
@@ -95,7 +103,17 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
+}
 
+img,
+video,
+iframe {
+  @apply max-w-full h-auto;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @apply border-border-invert border-4;
 }
 
 .container {

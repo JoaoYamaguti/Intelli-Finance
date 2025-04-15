@@ -8,29 +8,39 @@ main {
 }
 
 .start {
-  @apply flex flex-col items-center sm:items-baseline gap-4;
+  @apply py-30 flex flex-col items-center sm:items-baseline gap-4;
 
+  @apply lg:pt-35 lg:pb-18;
+
+  @apply 2xl:py-60;
 
   & h1 {
-    @apply mt-15 sm:mt-30 text-7xl text-center sm:text-start sm:text-8xl font-bold;
+    @apply text-heading text-5xl text-center font-bold;
+
+    @apply sm:text-start sm:text-7xl;
   }
 
   & p {
-    @apply mt-15 mb-5 text-4xl sm:text-4xl;
+    @apply mt-20 mb-20 text-2xl sm:text-2xl;
   }
-
 }
 
 nav {
-  @apply w-full sm:w-auto mb-30 flex flex-col sm:flex-row gap-6 sm:gap-16;
+  @apply w-full sm:w-auto flex flex-col sm:flex-row gap-6 sm:gap-16;
 
   & a {
-    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg;
+    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg shadow-lg text-white transition flex justify-center items-center;
+
+  }
+
+  & a:hover,
+  a:focus {
+    @apply bg-primary-hover;
   }
 }
 
 .topics {
-  @apply border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl;
+  @apply border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl bg-background-soft shadow-2xl;
 
   & section {
     @apply border-y border-border first:border-t-0 last:border-b-0;
@@ -46,6 +56,10 @@ nav {
     & h2 {
       @apply text-3xl font-bold text-center sm:text-start;
     }
+
+    & p {
+      @apply text-lg;
+    }
   }
 
   & picture {
@@ -58,10 +72,10 @@ nav {
 }
 
 footer {
-  @apply mt-10 py-6;
+  @apply mt-10 py-4 bg-neutral-950;
 
   & p {
-    @apply px-4 flex flex-row justify-center sm:justify-start items-center gap-3;
+    @apply px-4 flex flex-row text-white text-sm justify-center sm:justify-start items-center gap-3;
   }
 
   & a {

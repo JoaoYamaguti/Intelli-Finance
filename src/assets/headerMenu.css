@@ -1,0 +1,31 @@
+@import "../assets/base.css";
+
+@reference "../assets/base.css";
+
+header {
+  @apply fixed w-screen border-b py-2 border-border bg-background text-heading;
+
+  & h1 {
+    @apply text-xl/loose font-bold transition;
+  }
+
+  & h1:hover,
+  h1:focus {
+    @apply opacity-60;
+  }
+
+  & nav {
+    & a {
+      @apply text-base font-medium;
+    }
+
+    & a:hover,
+    a:focus {
+      @apply text-primary-hover;
+    }
+  }
+}
+
+.content {
+  @apply max-w-450 mx-auto px-4 2xl:px-6 flex flex-row justify-between items-center;
+}
