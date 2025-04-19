@@ -116,6 +116,11 @@ button:focus-visible {
   @apply border-border-invert border-4;
 }
 
+button,
+a {
+  @apply cursor-pointer;
+}
+
 .container {
 
   @apply max-w-7xl m-auto;

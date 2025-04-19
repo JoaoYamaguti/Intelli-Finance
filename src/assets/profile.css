@@ -1,0 +1,52 @@
+@import "../assets/base.css";
+
+@reference "../assets/base.css";
+
+main {
+  @apply pt-20 flex flex-col items-center gap-8;
+}
+
+nav {
+  @apply flex flex-row;
+
+  & a {
+    @apply px-12;
+  }
+
+  & a:nth-child(2) {
+    @apply border-x-2 border-border
+  }
+}
+
+
+form {
+  @apply max-w-3xl flex flex-row flex-nowrap gap-4 overflow-x-hidden transition scroll-smooth snap-x snap-mandatory;
+
+}
+
+fieldset {
+  @apply flex-[0_0_100%] flex flex-col gap-8;
+
+  & h2 {
+    @apply text-2xl font-bold text-heading text-center;
+  }
+
+  & label {
+    @apply block text-xl;
+  }
+
+  & input,
+  select {
+    @apply border border-border rounded py-1.5 px-1;
+  }
+
+  & ul {
+    & li {
+      @apply flex flex-row justify-between;
+    }
+  }
+}
+
+& .newTarget {
+  @apply flex flex-row justify-center gap-4;
+}

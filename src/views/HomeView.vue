@@ -11,7 +11,7 @@ import HeaderMenu from "../components/HeaderMenu.vue";
         <p>O futuro do seu dinheiro começa com inteligência</p>
         <nav class="btns">
           <RouterLink to="/login">Continuar</RouterLink>
-          <RouterLink to="/login">Começar</RouterLink>
+          <RouterLink to="/profile">Começar</RouterLink>
         </nav>
       </section>
 

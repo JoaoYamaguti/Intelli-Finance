@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import ProfileProvider from "./providers/PProfile.vue";
 </script>
 
 <template>
-
-  <RouterView />
-
+  <ProfileProvider>
+    <RouterView />
+  </ProfileProvider>
 </template>
