@@ -32,9 +32,9 @@ console.log(profile.name)
       <nav>
         <a href="#profile">Perfil</a>
         |
-        <a href="#targets">Metas</a>
-        |
         <a href="#expenses">Despesas Fixas</a>
+        |
+        <a href="#targets">Metas</a>
       </nav>
       <form>
         <fieldset id="profile">
@@ -57,6 +57,43 @@ console.log(profile.name)
           </label>
         </fieldset>
 
+
+        <fieldset id="expenses">
+          <h2>Despesas Fixas</h2>
+          <form id="newExpense" class="newExpense" @submit.prevent="addNewExpense">
+            <label for="">
+              <input v-model="expense.description" type="text" name="description" id="description"
+                placeholder="Descrição">
+            </label>
+            <label for="">
+              <input v-model="expense.valor" type="number" name="target" id="target" placeholder="R$ 300,00"
+                step="0.01">
+            </label>
+            <button type="submit">
+              <v-icon name="hi-plus" />
+            </button>
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th>Meta</th>
+                <th>Valor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(expense, index) in profile.expenses" :key="index">
+                <td data-title="Meta">{{ expense.description }}</td>
+                <td data-title="Valor">R$ {{ expense.valor }}</td>
+                <td>
+                  <button type="button" @click="removeExpense(index)">
+                    <v-icon name="la-trash-alt-solid" />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
         <fieldset id="targets">
           <h2>Metas</h2>
           <form id="newTarget" class="newTarget" @submit.prevent="addNewTarget">
@@ -90,43 +127,6 @@ console.log(profile.name)
                 <td>
                   <button type="button" @click="removeTarget(index)">
                     <v-icon name="la-trash-alt-solid"></v-icon>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </fieldset>
-
-        <fieldset id="expenses">
-          <h2>Despesas Fixas</h2>
-          <form id="newExpense" class="newExpense" @submit.prevent="addNewExpense">
-            <label for="">
-              <input v-model="expense.description" type="text" name="description" id="description"
-                placeholder="Descrição">
-            </label>
-            <label for="">
-              <input v-model="expense.valor" type="number" name="target" id="target" placeholder="R$ 300,00"
-                step="0.01">
-            </label>
-            <button type="submit">
-              <v-icon name="hi-plus" />
-            </button>
-          </form>
-          <table>
-            <thead>
-              <tr>
-                <th>Meta</th>
-                <th>Valor</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(expense, index) in profile.expenses" :key="index">
-                <td data-title="Meta">{{ expense.description }}</td>
-                <td data-title="Valor">R$ {{ expense.valor }}</td>
-                <td>
-                  <button type="button" @click="removeExpense(index)">
-                    <v-icon name="la-trash-alt-solid" />
                   </button>
                 </td>
               </tr>

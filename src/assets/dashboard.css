@@ -1,8 +1,9 @@
 @reference "../assets/base.css";
 
 main {
-  @apply bg-primary dark:bg-amber-950;
+  @apply w-full pt-16;
 
-  height: 200px;
-  width: 200px;
+  & h1 {
+    @apply text-2xl;
+  }
 }
