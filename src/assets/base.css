@@ -122,7 +122,6 @@ a {
 }
 
 .container {
-
-  @apply max-w-7xl m-auto;
+  @apply max-w-7xl m-auto px-4;
 
 }

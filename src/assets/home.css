@@ -3,7 +3,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply px-4 flex flex-col gap-4;
+  @apply flex flex-col gap-4;
 
 }
 
@@ -15,9 +15,9 @@ main {
   @apply 2xl:py-60;
 
   & h1 {
-    @apply text-heading text-5xl text-center font-bold;
+    @apply text-heading text-5xl text-center text-balance font-bold;
 
-    @apply sm:text-start sm:text-7xl;
+    @apply sm:text-7xl;
   }
 
   & p {
@@ -26,10 +26,12 @@ main {
 }
 
 nav {
-  @apply w-full sm:w-auto flex flex-col sm:flex-row gap-6 sm:gap-16;
+  @apply w-full sm:w-auto flex flex-col sm:flex-row gap-6 sm:gap-16
+  /* sm:self-end */
+  ;
 
   & a {
-    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg shadow-lg text-white transition flex justify-center items-center;
+    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg text-white transition flex justify-center items-center;
 
   }
 

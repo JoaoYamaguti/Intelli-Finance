@@ -3,50 +3,140 @@
 @reference "../assets/base.css";
 
 main {
-  @apply pt-20 flex flex-col items-center gap-8;
+  @apply w-full pt-20 flex flex-col items-center gap-8;
 }
 
 nav {
-  @apply flex flex-row;
+  @apply flex flex-row justify-between items-center text-center gap-[5vw];
 
   & a {
-    @apply px-12;
+    @apply hover:font-bold hover:text-heading transition;
   }
 
   & a:nth-child(2) {
-    @apply border-x-2 border-border
+    /* @apply border-x-2 border-border */
   }
 }
 
 
 form {
-  @apply max-w-3xl flex flex-row flex-nowrap gap-4 overflow-x-hidden transition scroll-smooth snap-x snap-mandatory;
+  @apply w-full flex flex-row flex-nowrap gap-12 overflow-x-hidden scroll-smooth snap-x snap-mandatory;
+
+  @apply md:w-3xl;
 
 }
 
 fieldset {
-  @apply flex-[0_0_100%] flex flex-col gap-8;
+  @apply w-[100%] snap-center shrink-0 flex flex-col items-center gap-10;
 
   & h2 {
     @apply text-2xl font-bold text-heading text-center;
   }
 
   & label {
-    @apply block text-xl;
+    @apply w-full flex flex-col text-pretty gap-2 text-xl;
   }
 
   & input,
   select {
-    @apply border border-border rounded py-1.5 px-1;
+    @apply w-full border border-border rounded py-1.5 px-1 text-center sm:text-start;
   }
 
   & ul {
+    @apply w-full border-t border-border py-4 px-1 sm:px-4;
+
     & li {
-      @apply flex flex-row justify-between;
+      @apply flex flex-row justify-between items-center;
+
+      & h3 {
+        @apply text-balance;
+      }
+
+
     }
   }
 }
 
-& .newTarget {
-  @apply flex flex-row justify-center gap-4;
+table {
+  @apply w-full border-border border-t;
+
+
+  & thead {
+    @apply rounded-4xl bg-background-soft text-white;
+  }
+
+  & thead tr {
+    @apply border-b border-border p-1 leading-12;
+
+  }
+
+  & tbody tr {
+    line-height: 3rem;
+  }
+
+  & tbody tr:hover {
+    color: var(--black);
+    background-color: var(--white);
+
+    & a {
+      color: var(--black);
+    }
+  }
+
+  & td,
+  th {
+    @apply pl-4 text-center;
+  }
+
+  & svg {
+    @apply size-6;
+  }
+}
+
+@media only screen and (max-width:550px) {
+  table {
+
+    & tbody,
+    tr,
+    td {
+      @apply block;
+    }
+
+    & thead tr {
+      @apply hidden;
+
+    }
+
+    & th {
+      @apply text-center;
+    }
+
+    & tr {
+      @apply border-border border-b;
+    }
+
+    & td {
+      @apply relative pl-[20%] text-center;
+    }
+
+    & td:before {
+      @apply content-[attr(data-title)] absolute left-14;
+
+    }
+
+    & tbody tr:hover {
+      & td {
+        border-bottom: solid 1px var(--black);
+      }
+    }
+  }
+}
+
+& .newTarget,
+.newExpense {
+  @apply w-full flex flex-col md:flex-row justify-center items-center gap-4;
+
+  & svg {
+    @apply size-6;
+  }
 }

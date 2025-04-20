@@ -8,7 +8,7 @@ import HeaderMenu from "../components/HeaderMenu.vue";
     <main>
       <section class="start">
         <h1>Um app inteligente que cuida das suas finanças pessoais</h1>
-        <p>O futuro do seu dinheiro começa com inteligência</p>
+        <p>O futuro do seu dinheiro começa com inteligência.</p>
         <nav class="btns">
           <RouterLink to="/login">Continuar</RouterLink>
           <RouterLink to="/profile">Começar</RouterLink>
