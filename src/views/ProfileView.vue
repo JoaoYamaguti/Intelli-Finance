@@ -1,28 +1,25 @@
 <script setup lang="ts">
 import { inject, reactive } from "vue";
 import HeaderMenu from "../components/HeaderMenu.vue";
-import type { IExpense, IProfile, ITarget } from "../lib/interfaces/IProfile";
+import type { IFixedExpense, IProfile, ITarget } from "../lib/interfaces/IProfile";
 
 const profile = inject("profile") as IProfile
 
 const target = reactive({}) as ITarget
 function addNewTarget() {
-  profile.targets.push(target)
+  profile.targets.push({ ...target })
 }
 function removeTarget(index: number) {
   profile.targets.splice(index, 1)
 }
 
-
-const expense = reactive({}) as IExpense
+const fixedExpense = reactive({}) as IFixedExpense
 function addNewExpense() {
-  profile.expenses.push(expense)
+  profile.fixedExpenses.push({ ...fixedExpense })
 }
 function removeExpense(index: number) {
-  profile.expenses.splice(index, 1)
+  profile.fixedExpenses.splice(index, 1)
 }
-
-console.log(profile.name)
 </script>
 
 <template>
@@ -45,14 +42,14 @@ console.log(profile.name)
           </label>
           <label for="salary">
             Salário:
-            <input v-model="profile.salary" type="text" name="salary" id="salary" required>
+            <input v-model="profile.salary" type="number" name="salary" id="salary" required>
           </label>
           <label for="investment">
             Qual a porcentagem da quantia restante você gostaria de investir:
             <select v-model="profile.investmentIntention" name="investment" id="investment">
-              <option value="20">20%</option>
-              <option value="30">30%</option>
-              <option value="40">40%</option>
+              <option value="0.2">20%</option>
+              <option value="0.3">30%</option>
+              <option value="0.4">40%</option>
             </select>
           </label>
         </fieldset>
@@ -62,11 +59,11 @@ console.log(profile.name)
           <h2>Despesas Fixas</h2>
           <form id="newExpense" class="newExpense" @submit.prevent="addNewExpense">
             <label for="">
-              <input v-model="expense.description" type="text" name="description" id="description"
+              <input v-model="fixedExpense.description" type="text" name="description" id="description"
                 placeholder="Descrição">
             </label>
             <label for="">
-              <input v-model="expense.valor" type="number" name="target" id="target" placeholder="R$ 300,00"
+              <input v-model="fixedExpense.valor" type="number" name="target" id="target" placeholder="R$ 300,00"
                 step="0.01">
             </label>
             <button type="submit">
@@ -76,14 +73,14 @@ console.log(profile.name)
           <table>
             <thead>
               <tr>
-                <th>Meta</th>
+                <th>Despesa Fixa</th>
                 <th>Valor</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(expense, index) in profile.expenses" :key="index">
-                <td data-title="Meta">{{ expense.description }}</td>
+              <tr v-for="(expense, index) in profile.fixedExpenses" :key="index">
+                <td data-title="Despesa Fixa">{{ expense.description }}</td>
                 <td data-title="Valor">R$ {{ expense.valor }}</td>
                 <td>
                   <button type="button" @click="removeExpense(index)">

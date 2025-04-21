@@ -4,7 +4,7 @@ export interface ITarget {
   valor: number
 }
 
-export interface IExpense {
+export interface IFixedExpense {
   description: string
   valor: number
 }
@@ -14,5 +14,5 @@ export interface IProfile {
   salary: number
   investmentIntention: number
   targets: Array<ITarget>
-  expenses: Array<IExpense>
+  fixedExpenses: Array<IFixedExpense>
 }
