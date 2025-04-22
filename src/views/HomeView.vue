@@ -4,17 +4,20 @@ import HeaderMenu from "../components/HeaderMenu.vue";
 
 <template>
   <HeaderMenu />
-  <div class="container">
-    <main>
+  <div class="backgroundPattern"></div>
+  <main>
+    <div class="container">
       <section class="start">
         <h1>Um app inteligente que cuida das suas finanças pessoais</h1>
         <p>O futuro do seu dinheiro começa com inteligência.</p>
         <nav class="btns">
-          <RouterLink to="/login">Continuar</RouterLink>
-          <RouterLink to="/profile">Começar</RouterLink>
+          <!-- <RouterLink to="/login">Continuar</RouterLink> -->
+          <RouterLink to="/profile">Começar <v-icon name="oi-arrow-right" /></RouterLink>
         </nav>
       </section>
+    </div>
 
+    <div class="container">
       <section class="topics">
         <article>
           <div class="content">
@@ -55,8 +58,8 @@ import HeaderMenu from "../components/HeaderMenu.vue";
           </picture>
         </article>
       </section>
-    </main>
-  </div>
+    </div>
+  </main>
   <footer>
     <div class="container">
       <p>

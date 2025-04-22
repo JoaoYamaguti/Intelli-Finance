@@ -3,7 +3,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply flex flex-col gap-4;
+  /* @apply flex flex-col gap-4; */
 
 }
 
@@ -21,17 +21,19 @@ main {
   }
 
   & p {
-    @apply mt-20 mb-20 text-2xl sm:text-2xl;
+    @apply mt-7 sm:mt-20 mb-20 text-2xl sm:text-2xl;
   }
 }
 
 nav {
-  @apply w-full sm:w-auto flex flex-col sm:flex-row gap-6 sm:gap-16
-  /* sm:self-end */
-  ;
+  @apply w-full sm:w-auto flex flex-col sm:flex-row gap-6 sm:gap-16 sm:self-end;
 
   & a {
-    @apply w-full px-6 py-2 text-2xl bg-primary rounded-md shadow-lg text-white transition flex justify-center items-center;
+    @apply w-full px-6 last:pr-4 py-2 text-2xl bg-primary rounded-md shadow-lg text-white transition flex justify-center items-center flex items-center;
+
+    & svg {
+      @apply size-8 transition-transform;
+    }
 
   }
 
@@ -39,10 +41,57 @@ nav {
   a:focus {
     @apply bg-primary-hover;
   }
+
+  & a:hover svg,
+  a:focus-visible svg {
+    @apply animate-[arrowSlide_1s_ease-out];
+    transform: translateX(.4rem);
+  }
+}
+
+@keyframes arrowSlide {
+  0% {}
+
+
+
+  100% {}
+}
+
+.backgroundPattern {
+  /* Basic dimensions and centering */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -9999;
+  /* Dark mode colors and gradient */
+  background: #121212;
+  /* Fallback for browsers that don't support gradients */
+  background: linear-gradient(135deg,
+      var(--color-pattern) 25%,
+      var(--color-pattern-soft) 25%,
+      var(--color-pattern-soft) 50%,
+      var(--color-pattern) 50%,
+      var(--color-pattern) 75%,
+      var(--color-pattern-soft) 75%,
+      var(--color-pattern-soft));
+  background-size: 40px 40px;
+
+  /* Animation */
+  animation: move 4s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 40px 40px;
+  }
 }
 
 .topics {
-  @apply border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl bg-background-soft shadow-2xl;
+  @apply -translate-y-4 border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl bg-background-soft shadow-2xl;
 
   & section {
     @apply border-y border-border first:border-t-0 last:border-b-0;
