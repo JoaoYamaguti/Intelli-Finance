@@ -1,5 +1,23 @@
-import { HiChevronRight, IoClose, HiPlus, LaTrashAltSolid, OiArrowRight } from 'oh-vue-icons/icons'
+import {
+  HiChevronRight,
+  IoClose,
+  HiPlus,
+  LaTrashAltSolid,
+  OiArrowRight,
+  MdSpacedashboard,
+  FaEdit,
+  MdLogoutRound,
+} from 'oh-vue-icons/icons'
 
-const icons = [HiChevronRight, IoClose, HiPlus, LaTrashAltSolid, OiArrowRight]
+const icons = [
+  HiChevronRight,
+  IoClose,
+  HiPlus,
+  LaTrashAltSolid,
+  OiArrowRight,
+  MdSpacedashboard,
+  FaEdit,
+  MdLogoutRound,
+]
 
 export default icons

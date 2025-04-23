@@ -16,13 +16,36 @@ header {
 
   & nav {
     & a {
-      @apply text-base font-medium;
+      @apply text-base font-medium relative;
     }
 
-    & a:hover,
-    a:focus {
+    &>a:hover,
+    >a:focus {
       @apply text-primary-hover;
     }
+  }
+}
+
+.burguerMenu {
+  @apply cursor-pointer;
+}
+
+.menu {
+  @apply absolute right-4 border border-border-hover rounded-md bg-background-soft;
+
+
+  & a {
+    @apply w-full py-2 px-3 cursor-pointer flex items-center gap-3;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      @apply bg-background-mute;
+    }
+  }
+
+  & li:last-child {
+    @apply border-t border-border-hover text-red-500;
   }
 }
 
