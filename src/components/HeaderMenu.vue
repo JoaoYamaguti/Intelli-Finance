@@ -1,29 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
 const logged = ref(true)
 
 const showMenu = ref(false)
 
-function handleMenu() {
-  showMenu.value = !showMenu.value
-}
-
-onMounted(() => {
-  document.addEventListener('click', (e) => {
-    console.log(e)
-    const target = e.target as HTMLElement
-    const { className } = target
-    const { offsetParent } = target
-
-    if (offsetParent == null) return
-
-    if (offsetParent.id != "burguerMenu" && className != "burguerMenu") {
-      showMenu.value = false
-    }
-  })
-}
-)
 </script>
 
 <template>
@@ -34,9 +15,13 @@ onMounted(() => {
       </h1>
       <nav>
         <div v-if="logged">
-          <div class="burguerMenu" @click="handleMenu">
-            Menu
-
+          <div class="burguerMenu">
+            <label>
+              <input v-model="showMenu" :true-value="true" :false-value="false" type="checkbox">
+              <div></div>
+              <div></div>
+              <div></div>
+            </label>
             <div v-if="showMenu" class="menu">
               <ul>
                 <li>

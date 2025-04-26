@@ -28,11 +28,45 @@ header {
 
 .burguerMenu {
   @apply cursor-pointer;
+
+  & label {
+    @apply flex flex-col cursor-pointer transition;
+
+    & input {
+      @apply hidden;
+    }
+
+    & div {
+      @apply w-7 h-1 mb-1 bg-heading transition;
+    }
+
+    div:last-child {
+      @apply mb-0;
+    }
+
+    & input:checked~div:nth-child(2) {
+      @apply rotate-45 translate-y-1
+    }
+
+    & input:checked~div:nth-child(3) {
+      @apply hidden;
+    }
+
+    & input:checked~div:nth-child(4) {
+      @apply -rotate-45 -translate-y-1;
+    }
+  }
+
+
 }
 
 .menu {
-  @apply absolute right-4 border border-border-hover rounded-md bg-background-soft;
+  @apply absolute right-4 top-[80%] border border-border-hover rounded-md bg-background-soft;
 
+
+  & li {
+    @apply z-30;
+  }
 
   & a {
     @apply w-full py-2 px-3 cursor-pointer flex items-center gap-3;
