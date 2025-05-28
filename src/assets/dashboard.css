@@ -1,7 +1,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply w-full pt-16 flex flex-col gap-6;
+  @apply w-full pt-15 pb-8 flex flex-col gap-2;
 
 }
 
@@ -10,7 +10,7 @@ h1 {
 }
 
 h2 {
-  @apply text-xl font-bold;
+  @apply font-bold;
 }
 
 h3 {
@@ -26,22 +26,34 @@ h4 {
   @apply w-full flex justify-between;
 
   & span {
-    @apply w-24 flex justify-between;
+    @apply w-28 flex justify-between;
   }
 }
 
+article {
+  @apply h-full border-b border-border sm:border-0 py-2;
+
+  & h2 {
+    @apply text-text font-bold;
+  }
+}
+
+.mainContent {
+  @apply sm:flex sm:flex-row sm:justify-between gap-2;
+
+}
 
 .resume {
-  @apply flex flex-wrap flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 text-heading;
+  @apply flex flex-wrap flex-col justify-center text-heading;
 
   & div {
-    @apply w-full sm:max-w-2xs md:sm:max-w-xs;
+    @apply w-full sm:w-2xs md:sm:max-w-xs;
   }
 
 }
 
 .values {
-  @apply py-2 border-b border-border sm:border-b-0;
+  @apply sm:border-b-0;
 
   & ul {
     @apply w-full pl-1 sm:pl-2;
@@ -56,15 +68,19 @@ h4 {
   }
 }
 
-.velocimeter {
-  @apply border-b border-border py-2 sm:border-b-0 flex flex-col;
+.speedometer {
+  @apply border-b border-border sm:border-b-0 flex flex-col items-center;
 
   & span {
-    @apply self-center text-3xl;
+    @apply self-center text-3xl text-heading;
 
     & strong {
-      @apply text-9xl;
+      @apply text-7xl md:text-8xl;
     }
+  }
+
+  & p {
+    @apply mt-8 self-baseline;
   }
 }
 
@@ -79,23 +95,30 @@ h4 {
 .topics {
   @apply border-border border-2 px-6 sm:px-16 sm:py-4 rounded-2xl bg-background-soft shadow-2xl;
 
+  & h2 {
+    @apply text-2xl font-bold sm:text-start text-center text-balance;
+
+  }
+
   & section {
     @apply border-y border-border first:border-t-0 last:border-b-0;
+
   }
 
   & article {
     @apply border-b-2 border-border last:border-b-0 py-8 flex flex-col md:flex-row odd:md:flex-row-reverse justify-between items-center gap-8;
+
   }
 
   & .content {
     @apply flex-1 flex flex-col gap-8;
 
-    & h2 {
-      @apply text-3xl font-bold text-center sm:text-start;
+    & h3 {
+      @apply text-xl font-bold text-center text-balance sm:text-start;
     }
 
     & p {
-      @apply text-lg;
+      @apply text-lg text-heading;
     }
   }
 

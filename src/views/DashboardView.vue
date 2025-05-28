@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import SpeedometerCanva from '../components/SpeedometerCanva.vue';
 import { inject, ref } from 'vue';
 import HeaderMenu from '../components/HeaderMenu.vue';
 import type { IProfile } from '../lib/interfaces/IProfile';
 
 const profile = inject("profile") as IProfile
-const welcomeMessage = ref("")
 
+const totalExpense = profile.salary - totalFixedExpense()
+const totalTarget = 0
+const investimentValue = totalExpense * profile.investmentIntention
+const totalDayToDay = totalExpense - investimentValue
+const speedometer = totalDayToDay / 30
 const hour = new Date().getHours()
+
+const welcomeMessage = ref("")
 
 if (hour >= 6 && hour < 12) {
   welcomeMessage.value = `Olá, ${profile.name.split(" ")[0]}. Bom dia!`
@@ -21,23 +28,9 @@ function totalFixedExpense(): number {
   profile.fixedExpenses.forEach((t) => (total = total + t.valor))
   return total
 }
-function totalExpense(): number {
-  return (profile.salary - totalFixedExpense())
-}
-function totalTarget() {
-  return 0
-}
 
-function investimentValue(): number {
-  return (totalExpense() * profile.investmentIntention)
-}
-
-function totalDayToDay(): number {
-  return (totalExpense() - investimentValue())
-}
-
-function velocimeter(): number {
-  return (totalDayToDay() / 30)
+function maxValueLabel() {
+  return (speedometer + speedometer / 2)
 }
 </script>
 
@@ -46,9 +39,9 @@ function velocimeter(): number {
   <div class="container">
     <main>
       <h1>{{ welcomeMessage }}</h1>
-      <section>
-        <h2>Resumo</h2>
+      <section class="mainContent">
         <article class="resume">
+          <h2>Resumo</h2>
           <div class="values">
             <h3>Salário Líquido:
               <span><strong>R$</strong>{{ profile.salary.toFixed(2).replace(".", ",") }}</span>
@@ -63,7 +56,7 @@ function velocimeter(): number {
               <li>
                 <h4>
                   Despesas Variaveis:
-                  <span><strong>R$</strong>{{ totalExpense().toFixed(2).replace(".", ",") }}</span>
+                  <span><strong>R$</strong>{{ totalExpense.toFixed(2).replace(".", ",") }}</span>
                 </h4>
               </li>
               <li>
@@ -71,35 +64,39 @@ function velocimeter(): number {
                   <li>
                     <h4>
                       Investimentos:
-                      <span><strong>R$</strong>{{ investimentValue().toFixed(2).replace(".", ",") }}</span>
+                      <span><strong>R$</strong>{{ investimentValue.toFixed(2).replace(".", ",") }}</span>
                     </h4>
                   </li>
                   <li>
                     <h4>
-                      Gastos diários:
-                      <span><strong>R$</strong>{{ totalDayToDay().toFixed(2).replace(".", ",") }}</span>
+                      Gastos Diários:
+                      <span><strong>R$</strong>{{ totalDayToDay.toFixed(2).replace(".", ",") }}</span>
                     </h4>
                   </li>
                   <li>
                     <h4>
                       Metas:
-                      <span><strong>R$</strong>{{ totalTarget().toFixed(2).replace(".", ",") }} </span>
+                      <span><strong>R$</strong>{{ totalTarget.toFixed(2).replace(".", ",") }} </span>
                     </h4>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
-          <div class="velocimeter">
+        </article>
+        <article>
+          <h2>Velocímetro</h2>
+          <div class="speedometer">
+            <span>R$ <strong>{{ speedometer.toFixed(2).split(".")[0] }}</strong>,{{
+              speedometer.toFixed(2).split(".")[1] }}</span>
+            <SpeedometerCanva :value="speedometer" :max-label="maxValueLabel()" />
             <p>
-              Considerando o valor: R${{ totalDayToDay().toFixed(2).replace(".", ",") }} para os gatos diarios:
-              <br>
-              Seu velocímetro é
+              Considerando o valor para os gatos diarios.
             </p>
-            <span>R$ <strong>{{ velocimeter().toFixed(2).split(".")[0] }}</strong>,{{
-              velocimeter().toString().split(".")[1] }}</span>
           </div>
         </article>
+      </section>
+      <section>
         <article class="targets"></article>
         <article class="details"></article>
       </section>
@@ -110,41 +107,73 @@ function velocimeter(): number {
       <section class="topics">
         <article>
           <div class="content">
-            <h2>Estrategia para gastos e investimentos</h2>
-            <p>Siga uma estrategia comprovada para atingir metas de viagens e investimentos e evitar o desespero
-              financeiro.</p>
+            <h2>Dicas Gerais de Finanças Pessoais</h2>
+            <p>
+              Gaste menos do que você ganha. Parece simples, mas é o primeiro passo para a liberdade financeira.
+            </p>
+            <p>
+              Tenha um orçamento mensal. Saber para onde seu dinheiro vai é essencial para controlar sua vida
+              financeira.
+            </p>
+            <p>
+              Anote todos os seus gastos — mesmo os pequenos. Eles fazem a diferença no fim do mês!
+            </p>
           </div>
-          <picture>
-            <img src="../assets/github-mark-white.svg" alt="image" loading="lazy" width="300" height="100">
-          </picture>
         </article>
         <article>
           <div class="content">
-            <h2>Calcule seu velocímetro</h2>
-            <p>Uma ótima estratégia para controlar seus gastos no dia a dia é o metodo do "velocímetro", que consiste em
-              limita o gasto diario em um certa quantia elvando em consideração suas despesas e investimentos.</p>
+            <h3>Investimentos e Poupança</h3>
+            <p>Pague-se primeiro: ao receber, já separe uma parte para você economizar.</p>
+
+            <p>Seu dinheiro parado perde valor com o tempo. Considere investir, mesmo que seja pouco.</p>
+
+            <p>Crie uma reserva de emergência com, no mínimo, 3 a 6 meses do seu custo de vida.</p>
           </div>
-          <picture>
-            <img src="../assets/github-mark-white.svg" alt="image" loading="lazy" width="300" height="100">
-          </picture>
         </article>
         <article>
           <div class="content">
-            <h2>Defina Metas</h2>
-            <p>Defina metas e receber uma estrategia personalizada para cada uma de suas meta.</p>
+            <h3>Consumo Consciente</h3>
+            <p>
+              Antes de comprar, pergunte-se: eu realmente preciso disso agora?
+            </p>
+            <p>
+              Evite compras por impulso. Espere 24h antes de finalizar.
+            </p>
+            <p>
+              Compare preços e busque cupons — economizar é um hábito!
+            </p>
           </div>
-          <picture>
-            <img src="../assets/github-mark-white.svg" alt="image" loading="lazy" width="300" height="100">
-          </picture>
         </article>
         <article>
           <div class="content">
-            <h2>Dicas Financeiras</h2>
-            <p>Acompanhe dicas na hora de fazer suas compras para diminuir o desperdicio e o endividamento.</p>
+            <h3>Cartão de Crédito e Dívidas</h3>
+            <p>
+              Evite usar o limite do cartão como extensão do seu salário.
+            </p>
+            <p>
+              Pague sempre o valor total da fatura, não apenas o mínimo!
+            </p>
+            <p>
+              Se tiver dívidas, priorize as com juros mais altos.
+            </p>
           </div>
-          <picture>
+        </article>
+        <article>
+          <div class="content">
+            <h3>Organização e Planejamento</h3>
+            <p>
+              Estabeleça metas financeiras realistas e acompanhe seu progresso.
+            </p>
+            <p>
+              Revise seus gastos toda semana. Pequenas mudanças fazem grandes diferenças.
+            </p>
+            <p>
+              Automatize seus pagamentos para evitar multas e juros.
+            </p>
+          </div>
+          <!-- <picture>
             <img src="../assets/github-mark-white.svg" alt="image" loading="lazy" width="300" height="100">
-          </picture>
+          </picture> -->
         </article>
       </section>
     </main>
