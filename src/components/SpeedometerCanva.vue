@@ -141,9 +141,4 @@ onMounted(() => {
   <canvas ref="speedometer" id="speedometer" width="288" height="150"></canvas>
 </template>
 
-<style>
-canvas {
-  width: 288px;
-  height: 150px;
-}
-</style>
+<style src="../assets/speedometer.css"></style>
