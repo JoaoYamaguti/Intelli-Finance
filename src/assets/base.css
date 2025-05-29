@@ -133,6 +133,6 @@ a {
 }
 
 .container {
-  @apply max-w-7xl m-auto px-4;
+  @apply max-w-6xl m-auto px-4;
 
 }
