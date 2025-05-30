@@ -1,7 +1,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply w-full pt-15 pb-8 flex flex-col gap-2 md:gap-6 md:pt-18;
+  @apply w-full pt-2 pb-4 flex flex-col gap-2 md:gap-6 md:pt-18;
 
 }
 

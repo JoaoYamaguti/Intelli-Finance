@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { inject, reactive, onMounted, onBeforeUnmount } from "vue";
+import { inject, onBeforeUnmount, onMounted, reactive, ref } from "vue";
+import { onBeforeRouteLeave } from "vue-router";
 import HeaderMenu from "../components/HeaderMenu.vue";
 import type { IFixedExpense, IProfile, ITarget } from "../lib/interfaces/IProfile";
-import { onBeforeRouteLeave } from "vue-router";
 
 const profile = inject("profile") as IProfile
-const notification = inject<(status:string, message:string) => Promise<void>>("notification")
+const notification = inject<(status: string, message: string) => Promise<void>>("notification")
 const editedProfile = reactive({ ...profile })
+const activeField = ref("profile")
+
+async function handleActiveField(field: string) {
+  activeField.value = field
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, 100);
+}
 
 const target = reactive({}) as ITarget
 function addNewTarget() {
@@ -29,6 +37,8 @@ function profileEdited() {
 }
 
 function saveEditedProfile() {
+  window.scrollTo({ top: 0 })
+
   if (!profileEdited()) {
     if (notification) notification("error", "Não há edições")
     return
@@ -40,7 +50,7 @@ function saveEditedProfile() {
   profile.fixedExpenses = editedProfile.fixedExpenses
   profile.targets = editedProfile.targets
 
-  if(notification) notification("ok", "Edições Salvas")
+  if (notification) notification("ok", "Edições Salvas")
 }
 
 const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -63,6 +73,7 @@ onBeforeRouteLeave(() => {
     return answer
   }
 })
+
 </script>
 
 <template>
@@ -70,14 +81,14 @@ onBeforeRouteLeave(() => {
   <div class="container">
     <main>
       <nav>
-        <a href="#profile">Perfil</a>
+        <a href="#profile" @click="handleActiveField('profile')">Perfil</a>
         |
-        <a href="#expenses">Despesas Fixas</a>
+        <a href="#expenses" @click="handleActiveField('expenses')">Despesas Fixas</a>
         |
-        <a href="#targets">Metas</a>
+        <a href="#targets" @click="handleActiveField('targets')">Metas</a>
       </nav>
       <form>
-        <fieldset id="profile">
+        <fieldset id="profile" :class="activeField == 'profile' ? '' : 'noHeight'">
           <h2>Perfil</h2>
           <label for="name">
             Nome:
@@ -98,7 +109,7 @@ onBeforeRouteLeave(() => {
         </fieldset>
 
 
-        <fieldset id="expenses">
+        <fieldset id="expenses" :class="activeField == 'expenses' ? '' : 'noHeight'">
           <h2>Despesas Fixas</h2>
           <form id="newExpense" class="newExpense" @submit.prevent="addNewExpense">
             <label for="">
@@ -134,7 +145,7 @@ onBeforeRouteLeave(() => {
             </tbody>
           </table>
         </fieldset>
-        <fieldset id="targets">
+        <fieldset id="targets" :class="activeField == 'targets' ? '' : 'noHeight'">
           <h2>Metas</h2>
           <form id="newTarget" class="newTarget" @submit.prevent="addNewTarget">
             <label for="">

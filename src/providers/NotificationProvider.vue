@@ -34,7 +34,7 @@ provide("notification", showNotification)
 
 <template>
   <slot></slot>
-    <div v-if="notification.show" class="card">
+    <div v-if="notification.show" class="notification">
       <div :class="notification.status"></div>
       <p>{{ notification.message }}</p>
   </div>

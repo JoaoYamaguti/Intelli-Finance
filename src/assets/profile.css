@@ -20,7 +20,7 @@ nav {
 
 
 form {
-  @apply w-full flex flex-row flex-nowrap gap-12 overflow-x-hidden scroll-smooth snap-x snap-mandatory;
+  @apply w-full h-fit flex flex-row flex-nowrap gap-12 overflow-x-hidden overflow-y-hidden scroll-smooth snap-x snap-mandatory;
 
   @apply md:w-3xl;
 
@@ -132,13 +132,17 @@ table {
   }
 }
 
-& .newTarget,
+.newTarget,
 .newExpense {
   @apply w-full flex flex-col md:flex-row justify-center items-center gap-4;
 
   & svg {
     @apply size-6;
   }
+}
+
+.noHeight{
+  @apply h-0;
 }
 
 footer {

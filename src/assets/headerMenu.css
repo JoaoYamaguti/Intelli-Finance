@@ -3,7 +3,7 @@
 @reference "../assets/base.css";
 
 header {
-  @apply w-screen border-b py-2 border-border bg-background text-heading z-10;
+  @apply w-screen sticky top-0 border-b py-2 border-border bg-background text-heading z-10;
 
   & h1 {
     @apply text-xl/loose font-bold transition;

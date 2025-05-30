@@ -3,12 +3,12 @@
 @reference "../assets/base.css";
 
 main {
-  /* @apply flex flex-col gap-4; */
+  @apply flex flex-col gap-20;
 
 }
 
 .start {
-  @apply py-30 flex flex-col items-center sm:items-baseline gap-4;
+  @apply py-5 flex flex-col items-center sm:items-baseline gap-4;
 
   @apply lg:pt-35 lg:pb-18;
 
@@ -21,7 +21,7 @@ main {
   }
 
   & p {
-    @apply mt-7 sm:mt-20 mb-20 text-2xl sm:text-2xl;
+    @apply mt-5 sm:mt-20 mb-5 text-2xl sm:text-2xl;
   }
 }
 
@@ -47,14 +47,6 @@ nav {
     @apply animate-[arrowSlide_1s_ease-out];
     transform: translateX(.4rem);
   }
-}
-
-@keyframes arrowSlide {
-  0% {}
-
-
-
-  100% {}
 }
 
 .backgroundPattern {

@@ -2,8 +2,8 @@
 
 @reference "../assets/base.css";
 
-.card {
-  @apply min-w-60 max-w-sm fixed -top-10 left-1/2 -translate-x-1/2 rounded-md bg-background-soft text-heading animate-notification;
+.notification {
+  @apply min-w-60 max-w-sm fixed -top-10 left-1/2 -translate-x-1/2 z-10 rounded-md bg-background-soft text-heading animate-notification;
 
   & .ok {
     @apply h-1 rounded-t-md bg-green-700;
