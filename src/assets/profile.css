@@ -3,11 +3,11 @@
 @reference "../assets/base.css";
 
 main {
-  @apply w-full py-20 flex flex-col items-center gap-8;
+  @apply w-full mb-14 flex flex-col items-center gap-2;
 }
 
 nav {
-  @apply flex flex-row justify-between items-center text-center gap-[5vw];
+  @apply pt-4 flex flex-row justify-between items-center text-center gap-[5vw];
 
   & a {
     @apply hover:font-bold hover:text-heading transition;
@@ -18,7 +18,6 @@ nav {
   }
 }
 
-
 form {
   @apply w-full flex flex-row flex-nowrap gap-12 overflow-x-hidden scroll-smooth snap-x snap-mandatory;
 
@@ -27,7 +26,7 @@ form {
 }
 
 fieldset {
-  @apply w-[100%] snap-center shrink-0 flex flex-col items-center gap-10;
+  @apply w-[100%] pt-4 snap-center shrink-0 flex flex-col items-center gap-6;
 
   & h2 {
     @apply text-2xl font-bold text-heading text-center;
@@ -39,7 +38,7 @@ fieldset {
 
   & input,
   select {
-    @apply w-full border border-border rounded py-1.5 px-1 text-center sm:text-start;
+    @apply w-full border border-border rounded py-1.5 px-1 text-start sm:text-start indent-4;
   }
 
   & ul {
@@ -56,6 +55,8 @@ fieldset {
     }
   }
 }
+
+.profile {}
 
 table {
   @apply w-full border-border border-t;
@@ -132,11 +133,23 @@ table {
   }
 }
 
-& .newTarget,
+.newTarget,
 .newExpense {
   @apply w-full flex flex-col md:flex-row justify-center items-center gap-4;
 
   & svg {
     @apply size-6;
+  }
+}
+
+.save {
+  @apply fixed bottom-0 w-full border-t border-border bg-background;
+
+  & div {
+    @apply max-w-5xl m-auto p-3 flex justify-end;
+  }
+
+  & button {
+    @apply rounded-md px-4 py-1 bg-green-700 text-heading font-bold;
   }
 }

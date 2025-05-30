@@ -45,7 +45,7 @@ function removeExpense(index: number) {
             <input v-model="profile.salary" type="number" name="salary" id="salary" required>
           </label>
           <label for="investment">
-            Qual a porcentagem da quantia restante você gostaria de investir:
+            Investimento:
             <select v-model="profile.investmentIntention" name="investment" id="investment">
               <option value="0.2">20%</option>
               <option value="0.3">30%</option>
@@ -53,7 +53,6 @@ function removeExpense(index: number) {
             </select>
           </label>
         </fieldset>
-
 
         <fieldset id="expenses">
           <h2>Despesas Fixas</h2>
@@ -133,6 +132,12 @@ function removeExpense(index: number) {
       </form>
     </main>
   </div>
+  <div class="save">
+    <div>
+      <button>Salvar Perfil</button>
+    </div>
+  </div>
+
 </template>
 
 <style scoped src="../assets/profile.css" />
