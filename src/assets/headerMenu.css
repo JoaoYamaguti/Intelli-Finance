@@ -84,5 +84,5 @@ header {
 }
 
 .content {
-  @apply max-w-450 mx-auto px-4 2xl:px-6 flex flex-row justify-between items-center;
+  @apply max-w-7xl mx-auto px-4 2xl:px-6 flex flex-row justify-between items-center;
 }

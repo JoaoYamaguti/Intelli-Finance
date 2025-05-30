@@ -1,0 +1,6 @@
+@reference "../assets/base.css";
+
+canvas {
+  @apply w-[288px] md:w-[308px] h-[150px] md:h-[160px];
+
+}

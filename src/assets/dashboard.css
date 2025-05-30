@@ -1,7 +1,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply w-full pt-15 pb-8 flex flex-col gap-2;
+  @apply w-full pt-15 pb-8 flex flex-col gap-2 md:gap-6 md:pt-18;
 
 }
 
@@ -14,11 +14,11 @@ h2 {
 }
 
 h3 {
-  @apply text-lg;
+  @apply text-lg md:text-2xl lg:text-3xl;
 }
 
 h4 {
-  @apply text-base;
+  @apply text-base md:text-xl lg:text-2xl;
 }
 
 h3,
@@ -26,7 +26,7 @@ h4 {
   @apply w-full flex justify-between;
 
   & span {
-    @apply w-28 flex justify-between;
+    @apply w-30 md:w-48 flex justify-between;
   }
 }
 
@@ -39,27 +39,26 @@ article {
 }
 
 .mainContent {
-  @apply sm:flex sm:flex-row sm:justify-between gap-2;
+  @apply sm:flex sm:flex-row sm:justify-between gap-4;
 
 }
 
 .resume {
-  @apply flex flex-wrap flex-col justify-center text-heading;
-
-  & div {
-    @apply w-full sm:w-2xs md:sm:max-w-xs;
-  }
-
+  @apply sm:w-md lg:w-lg flex flex-wrap flex-col justify-center text-heading;
 }
 
 .values {
-  @apply sm:border-b-0;
+  @apply sm:border-b-0 md:mt-2;
+
+  & h3 {
+    @apply lg:pb-1;
+  }
 
   & ul {
     @apply w-full pl-1 sm:pl-2;
 
     & li {
-      @apply w-full flex;
+      @apply w-full flex pb-1;
 
       & ul {
         @apply w-full pl-2 sm:pl-4;
@@ -69,13 +68,13 @@ article {
 }
 
 .speedometer {
-  @apply border-b border-border sm:border-b-0 flex flex-col items-center;
+  @apply lg:w-md border-b border-border sm:border-b-0 flex flex-col items-center;
 
   & span {
-    @apply self-center text-3xl text-heading;
+    @apply self-center text-3xl md:text-4xl text-heading;
 
     & strong {
-      @apply text-7xl md:text-8xl;
+      @apply text-7xl md:text-8xl lg:text-9xl;
     }
   }
 
@@ -85,7 +84,7 @@ article {
 }
 
 .editProfile {
-  @apply my-12 border-2 border-border rounded-md py-2 px-4 flex justify-between items-center gap-4 text-heading text-balance;
+  @apply border-2 border-border rounded-md py-2 px-4 flex justify-between items-center gap-4 text-heading text-balance;
 
   & a {
     @apply border border-border rounded-md py-1.5 px-3 bg-background-soft hover:bg-background-mute focus:bg-background-mute focus-visible:bg-background-mute text-center;

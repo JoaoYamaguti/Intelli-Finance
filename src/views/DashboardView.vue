@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SpeedometerCanva from '../components/SpeedometerCanva.vue';
 import { inject, ref } from 'vue';
 import HeaderMenu from '../components/HeaderMenu.vue';
+import SpeedometerCanva from '../components/SpeedometerCanva.vue';
 import type { IProfile } from '../lib/interfaces/IProfile';
 
 const profile = inject("profile") as IProfile
@@ -30,7 +30,19 @@ function totalFixedExpense(): number {
 }
 
 function maxValueLabel() {
-  return (speedometer + speedometer / 2)
+  if (speedometer < 150) {
+    return 150
+  } else if (speedometer < 300) {
+    return 300
+  } else if (speedometer < 500) {
+    return 500
+  } else if (speedometer < 1000) {
+    return 1000
+  } else if (speedometer < 5000) {
+    return 5000
+  } else if (speedometer < 10000) {
+    return 10000
+  }
 }
 </script>
 
