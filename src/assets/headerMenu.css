@@ -3,7 +3,7 @@
 @reference "../assets/base.css";
 
 header {
-  @apply fixed w-screen border-b py-2 border-border bg-background text-heading z-10;
+  @apply w-screen border-b py-2 border-border bg-background text-heading z-10;
 
   & h1 {
     @apply text-xl/loose font-bold transition;
@@ -27,7 +27,7 @@ header {
 }
 
 .burguerMenu {
-  @apply cursor-pointer;
+  @apply cursor-pointer relative;
 
   & label {
     @apply flex flex-col cursor-pointer transition;
@@ -61,8 +61,7 @@ header {
 }
 
 .menu {
-  @apply absolute right-4 top-[80%] border border-border-hover rounded-md bg-background-soft;
-
+  @apply absolute right-0 top-[200%] border border-border-hover rounded-md bg-background-soft;
 
   & li {
     @apply z-30;

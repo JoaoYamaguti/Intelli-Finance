@@ -18,7 +18,6 @@ provide("profile", profile)
 
 watch(profile, () => {
   localStorage.setItem("profile", JSON.stringify(profile))
-  console.log(profile)
 })
 
 </script>

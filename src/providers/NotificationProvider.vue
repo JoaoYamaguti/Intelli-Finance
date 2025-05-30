@@ -1,30 +1,43 @@
-<script setup lang="ts"> 
-const notifications = ref([])
+<script setup lang="ts">
+import { nextTick, provide, reactive } from 'vue';
 
-function addNewNotification(status: string, message:string) {
-    notifications.value.push({...status, ...message})
-    await nextTick()
+const notification = reactive({
+  show: false,
+  status: "",
+  message: ""
+})
+
+let notificationTimer = setTimeout(() => {}, 0)
+
+function removeNotification(timer: number) {
+  clearTimeout(timer)
+  notification.show = false
 }
 
-function RemoveNotification(status: string, message:string) {
-    notifications.value.push({...status, ...message})
+async function showNotification(status: string, message: string) {
+  removeNotification(notificationTimer)
+
+  await nextTick()
+
+  notification.status = status
+  notification.message = message
+  notification.show = true
+
+  notificationTimer = setTimeout(() => {
+    removeNotification(notificationTimer)
+  }, 3000)
 }
 
+provide("notification", showNotification)
 
 </script>
 
-<template> 
-    <slot></slot>
-    <div class="notifications">
-        <ul v-for="(notification, index) in notifications">
-            <li>
-                <div class="notification">
-                    <div class="statsBar"></div>
-                    <p> </p>
-                </div>
-            </li>
-        </ul>
-    </div>
+<template>
+  <slot></slot>
+    <div v-if="notification.show" class="card">
+      <div :class="notification.status"></div>
+      <p>{{ notification.message }}</p>
+  </div>
 </template>
 
-<style src="../assets/notification.css"> </style>
+<style src="../assets/notification.css"></style>

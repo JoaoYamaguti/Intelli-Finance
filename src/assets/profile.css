@@ -3,7 +3,7 @@
 @reference "../assets/base.css";
 
 main {
-  @apply w-full py-20 flex flex-col items-center gap-8;
+  @apply w-full pt-5 pb-20 flex flex-col items-center gap-8;
 }
 
 nav {
@@ -27,7 +27,7 @@ form {
 }
 
 fieldset {
-  @apply w-[100%] snap-center shrink-0 flex flex-col items-center gap-10;
+  @apply w-[100%] snap-center shrink-0 flex flex-col items-center gap-7 sm:gap-10;
 
   & h2 {
     @apply text-2xl font-bold text-heading text-center;
@@ -138,5 +138,13 @@ table {
 
   & svg {
     @apply size-6;
+  }
+}
+
+footer {
+  @apply max-w-3xl w-full py-2 px-4 fixed left-1/2 -translate-x-1/2 bottom-0 flex justify-end bg-background;
+
+  & button {
+    @apply py-2 px-4 bg-green-700 hover:bg-green-800 active:bg-green-900 rounded-md font-bold text-heading;
   }
 }

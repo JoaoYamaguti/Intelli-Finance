@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { inject, reactive } from "vue";
+import { inject, reactive, onMounted, onBeforeUnmount } from "vue";
 import HeaderMenu from "../components/HeaderMenu.vue";
 import type { IFixedExpense, IProfile, ITarget } from "../lib/interfaces/IProfile";
+import { onBeforeRouteLeave } from "vue-router";
 
 const profile = inject("profile") as IProfile
-const editedProfile = reactive(profile)
+const notification = inject<(status:string, message:string) => Promise<void>>("notification")
+const editedProfile = reactive({ ...profile })
 
 const target = reactive({}) as ITarget
 function addNewTarget() {
@@ -22,17 +24,44 @@ function removeExpense(index: number) {
   editedProfile.fixedExpenses.splice(index, 1)
 }
 
+function profileEdited() {
+  return JSON.stringify(profile) != JSON.stringify(editedProfile)
+}
+
 function saveEditedProfile() {
-  profile = {...editedProfile}
+  if (!profileEdited()) {
+    if (notification) notification("error", "Não há edições")
+    return
+  }
+
+  profile.name = editedProfile.name
+  profile.salary = editedProfile.salary
+  profile.investmentIntention = editedProfile.investmentIntention
+  profile.fixedExpenses = editedProfile.fixedExpenses
+  profile.targets = editedProfile.targets
+
+  if(notification) notification("ok", "Edições Salvas")
+}
+
+const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+  if (profileEdited()) {
+    event.preventDefault()
+  }
 }
 
 onMounted(() => {
+  window.addEventListener('beforeunload', handleBeforeUnload)
+})
 
-  window.addEventListener('beforeunload', (e) => {
-    e.preventDefault()
-      
-    }
-  })
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload)
+})
+
+onBeforeRouteLeave(() => {
+  if (profileEdited()) {
+    const answer = confirm("Você realmente quer sair sem salvar?")
+    return answer
+  }
 })
 </script>
 
@@ -59,7 +88,7 @@ onMounted(() => {
             <input v-model="editedProfile.salary" type="number" name="salary" id="salary" required>
           </label>
           <label for="investment">
-            Qual a porcentagem da quantia restante você gostaria de investir:
+            Investimento:
             <select v-model="editedProfile.investmentIntention" name="investment" id="investment">
               <option value="0.2">20%</option>
               <option value="0.3">30%</option>
@@ -147,6 +176,9 @@ onMounted(() => {
       </form>
     </main>
   </div>
+  <footer>
+    <button type="button" @click="saveEditedProfile">Salvar Perfil</button>
+  </footer>
 </template>
 
 <style scoped src="../assets/profile.css" />

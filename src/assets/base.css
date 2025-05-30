@@ -82,6 +82,27 @@
 
   --color-heading: var(--color-heading-root);
   --color-text: var(--color-text-root);
+
+  --animate-notification: notification 3s ease-in-out;
+
+  @keyframes notification {
+    0% {
+      top: -2.5rem
+    }
+
+    33% {
+      top: 2.5rem
+    }
+
+    66% {
+      top: 2.5rem
+    }
+
+    100% {
+      top: -2.5rem
+    }
+
+  }
 }
 
 *,
